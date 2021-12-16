@@ -53,6 +53,7 @@ class Dashboard extends Component {
       );
 
       this.setState({ foods: foodsUpdated });
+      console.log(foods)
     } catch (err) {
       console.log(err);
     }
