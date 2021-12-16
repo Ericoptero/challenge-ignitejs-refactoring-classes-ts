@@ -15,7 +15,7 @@ interface FoodItemProps {
 
 interface FoodProps {
   food: FoodItemProps;
-  handleEditFood: (food: FoodItemProps) => Promise<void>;
+  handleEditFood: (food: FoodItemProps) => void;
   handleDelete: (id: number) => Promise<void>;
 }
 
