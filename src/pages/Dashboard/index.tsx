@@ -16,6 +16,8 @@ interface FoodItemProps {
   available: boolean;
 }
 
+type NotCreatedFoodItem = Omit<FoodItemProps, 'available' | 'id'>
+
 export default function Dashboard() {
   const [foods, setFoods] = useState<FoodItemProps[]>([]);
   const [editingFood, setEditingFood] = useState<FoodItemProps>({} as FoodItemProps);
@@ -31,7 +33,7 @@ export default function Dashboard() {
     loadFoodData();
   }, [])
 
-  async function handleAddFood(food: FoodItemProps) {
+  async function handleAddFood(food: NotCreatedFoodItem) {
     try {
       const { data } = await api.post('/foods', {
         ...food,
@@ -44,7 +46,7 @@ export default function Dashboard() {
     }
   }
 
-  async function handleUpdateFood(food: FoodItemProps) {
+  async function handleUpdateFood(food: NotCreatedFoodItem) {
     try {
       const foodUpdated = await api.put(
         `/foods/${editingFood.id}`,
